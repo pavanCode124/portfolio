@@ -122,16 +122,7 @@ export default function AiCoreBackground() {
     let seed = 9;
     const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
 
-    const build = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      w = window.innerWidth;
-      h = window.innerHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
+    const rebuild = () => {
       seed = 9;
       radius = Math.max(170, Math.min(w, h) * 0.32);
       lattice = icosphere(radius);
@@ -153,6 +144,26 @@ export default function AiCoreBackground() {
 
       coreStats.vertices = lattice.verts.length;
       coreStats.edges = lattice.edges.length;
+    };
+
+    /**
+     * Mobile browsers fire `resize` every time the URL bar slides away. Re-sizing
+     * the bitmap is cheap; regenerating the lattice is not, so only do that when
+     * the width changes or the height moves by more than a toolbar's worth.
+     */
+    const build = () => {
+      const nw = window.innerWidth;
+      const nh = window.innerHeight;
+      const reshape = nw !== w || Math.abs(nh - h) > 140;
+      w = nw;
+      h = nh;
+      dpr = Math.min(window.devicePixelRatio || 1, nw < 768 ? 1.25 : 1.5);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (reshape) rebuild();
     };
 
     // the agent pressing a folder sends a surge through the core

@@ -15,6 +15,20 @@ export default function Hero() {
             <span className="hero__hello">Hi, I’m</span>
             <span className="hero__name">{profile.name}</span>
           </h1>
+          <p className="hero__edu reveal">
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden>
+              <path
+                d="M12 4 2 9l10 5 10-5-10-5Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinejoin="round"
+              />
+              <path d="M6 11.5V16c0 1.4 2.7 2.6 6 2.6s6-1.2 6-2.6v-4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+              <path d="M21 10v4.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+            Graduated from <strong>{profile.education}</strong>
+          </p>
           <p className="hero__role reveal">
             <span className="hero__role-title">{profile.role}.</span>
             <span className="hero__role-line">

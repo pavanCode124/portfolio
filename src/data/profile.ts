@@ -8,6 +8,7 @@ export const profile = {
   focus: 'Real-time 3D · Simulation · Full-stack',
   location: 'India',
   availability: 'Open to Software Engineering roles',
+  education: 'Visvesvaraya National Institute of Technology, Nagpur',
   email: 'pavancode124@gmail.com',
   github: 'https://github.com/pavanCode124',
   resume: '', // e.g. '/resume.pdf' after dropping the file into /public

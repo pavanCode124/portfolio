@@ -462,6 +462,7 @@ export function Robot() {
       color: new THREE.Color(),
       bays: [] as HTMLElement[],
       bayRefresh: 0,
+      navH: 68,
       activeBay: '',
       nextBlink: 2,
       blinkUntil: 0,
@@ -500,6 +501,7 @@ export function Robot() {
     /* ---------- find the bay of the section in view ---------- */
     if (t > s.bayRefresh) {
       s.bays = Array.from(document.querySelectorAll<HTMLElement>('[data-robot-bay]'));
+      s.navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
       s.bayRefresh = t + 1;
     }
     let bayKey = 'fallback';
@@ -896,7 +898,8 @@ export function Robot() {
       // keep the bubble on screen; the arrow shifts so it still points at the head
       const half = ((bubble.firstElementChild as HTMLElement | null)?.offsetWidth ?? 0) / 2;
       const cx = THREE.MathUtils.clamp(bx, half + 10, Math.max(half + 10, w - half - 10));
-      const cy = Math.max(by, (bubble.firstElementChild as HTMLElement | null)?.offsetHeight ?? 0) + 4;
+      // the bubble grows upwards from cy, so keep its top clear of the fixed nav
+      const cy = Math.max(by, ((bubble.firstElementChild as HTMLElement | null)?.offsetHeight ?? 0) + s.navH + 6);
       bubble.style.transform = `translate3d(${cx.toFixed(1)}px, ${cy.toFixed(1)}px, 0) translate(-50%, -100%)`;
       bubble.style.setProperty('--arrow', `${THREE.MathUtils.clamp(bx - cx, -half + 16, half - 16).toFixed(1)}px`);
     }

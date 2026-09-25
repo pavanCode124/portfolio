@@ -12,8 +12,9 @@ import { Robot } from './Robot';
  * click. Pointer data reaches the robot through the shared `pointer` object.
  */
 export default function RobotCanvas() {
-  // Drop resolution on slow GPUs instead of dropping frames
-  const maxDpr = Math.min(window.devicePixelRatio || 1, 1.75);
+  // Drop resolution on slow GPUs instead of dropping frames. Phones ship 3x
+  // panels on modest GPUs, so they get a tighter ceiling than desktops.
+  const maxDpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1.25 : 1.75);
   const [dpr, setDpr] = useState(maxDpr);
   return (
     <Canvas

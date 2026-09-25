@@ -23,6 +23,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: '#05060d',
   colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+  // Let the page paint under notches; the CSS pads content back with env(safe-area-inset-*)
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
