@@ -6,6 +6,12 @@ export type Shot = {
   height: number;
 };
 
+/** Where the finished product actually lives, shown inside the project window. */
+export type ProjectLink = {
+  href: string;
+  label: string;
+};
+
 export type Project = {
   id: string;
   index: string;
@@ -16,6 +22,7 @@ export type Project = {
   platform: string;
   accent: string;
   accent2: string;
+  link?: ProjectLink;
   summary: string;
   role: string;
   highlights: { title: string; body: string }[];
@@ -38,6 +45,7 @@ export const projects: Project[] = [
     platform: 'Web',
     accent: '#38bdf8',
     accent2: '#2563eb',
+    link: { href: 'https://drone.rajuddan.in/login', label: 'Open the live app' },
     summary:
       'A classroom simulator that teaches how a drone is built and why it flies — or doesn’t. Students assemble a quadcopter, hexacopter or octocopter part by part, wire the loom pin to pin, pass pre-flight checks, then fly it through two fields — forest and city — with mission gates, live telemetry and crash reports that make it play like a game. Nothing is scripted: every failure falls out of a real control loop. A Next.js portal on top gives students, schools and administrators their own dashboards.',
     role:
@@ -106,6 +114,7 @@ export const projects: Project[] = [
     platform: 'Android · iOS',
     accent: '#60a5fa',
     accent2: '#22d3ee',
+    link: { href: 'https://play.google.com/store/search?q=groomtap&c=apps', label: 'Get it on Google Play' },
     summary:
       'A four-sided marketplace that brings salon services to the customer’s door. Customers discover salons and freelance artists near them, build a cart across service categories, pick a slot and pay in-app. Partners onboard through a verification flow that an admin approves before they go live.',
     role:

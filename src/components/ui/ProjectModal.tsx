@@ -74,6 +74,33 @@ export default function ProjectModal() {
               {project.name}
             </h2>
             <p className="modal__tagline">{project.tagline}</p>
+            {project.link && (
+              <p className="modal__links">
+                <a
+                  className="modal__link"
+                  href={project.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor={project.link.label}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden>
+                    <path
+                      d="M10 13a4.5 4.5 0 0 0 6.36 0l2.83-2.83a4.5 4.5 0 0 0-6.36-6.36l-1.5 1.5M14 11a4.5 4.5 0 0 0-6.36 0l-2.83 2.83a4.5 4.5 0 0 0 6.36 6.36l1.5-1.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {project.link.label}
+                  <span className="modal__link-arrow" aria-hidden>
+                    ↗
+                  </span>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </p>
+            )}
             <ul className="modal__meta">
               <li>
                 <small>Timeline</small>

@@ -1771,6 +1771,42 @@ kbd {
   color: #c7cde6;
 }
 
+.modal__links {
+  margin: 18px 0 0;
+}
+
+.modal__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: color-mix(in oklab, var(--accent) 70%, #ffffff);
+  transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease), box-shadow 0.25s;
+}
+
+.modal__link:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: color-mix(in oklab, var(--accent) 20%, transparent);
+  box-shadow: 0 10px 30px -12px var(--accent);
+}
+
+.modal__link svg {
+  flex: none;
+  color: var(--accent);
+}
+
+.modal__link-arrow {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
 .modal__meta {
   display: flex;
   flex-wrap: wrap;
@@ -2590,6 +2626,13 @@ kbd {
   .modal__tagline {
     font-size: 16px;
   }
+  .modal__links {
+    margin-top: 16px;
+  }
+  .modal__link {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
   .modal__meta {
     gap: 12px 22px;
     margin-top: 20px;
@@ -2758,6 +2801,9 @@ kbd {
     transform: none;
   }
   .principle:hover {
+    transform: none;
+  }
+  .modal__link:hover {
     transform: none;
   }
   .folder:hover .folder__paper {
